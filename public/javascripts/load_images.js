@@ -1,10 +1,13 @@
 function updatesImages(data){
+//script to load all images on shop page
+//houses all functionality surrounding images
+
 
     //creates html equiv of <img src="myImage.jpg"></img>
     for(i=0; i<data.length; i++){
         const imageInfo=data[i];
         const span =$("<span>").text(imageInfo.title);
-        const img = $("<img/>").attr("src", "/images/"+imageInfo.image);
+        const img = $("<img/>").attr("src", "/images/"+imageInfo.image).attr("onclick", "redirectToView()");
         const div = $("<div></div>").append(span).append(img);
         $("#images").append(div);
     }
@@ -26,6 +29,10 @@ $(document).ready(function(){
 
 function loadRandomImage() {
     $.get("data/images.json", loadOneImage);
+}
+
+function redirectToView() {
+    window.location.href="view.html";
 }
 
 $(document).ready(function(){
