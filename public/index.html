@@ -23,12 +23,51 @@
 </head>
 
 <body style="background-color:rgb(187, 210, 230)">
-  <p style="text-align: center;">
-    <a href="./cart.html">Cart</a>
-    <a href="./location.html">Location</a>
-    <a href="./user.html">User</a>
-    <a href="./summary.html">Summary</a>
-  </p>
+  <!--bootstrap defining the nav bar-->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">The Better Blanket</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-mdb-toggle="collapse"
+        data-mdb-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="./summary.html">Summary</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./shop.html">Shop</a>
+          </li>
+          <form class="d-flex input-group w-auto">
+            <input
+              type="search"
+              class="form-control rounded"
+              placeholder="Search"
+              aria-label="Search"
+              aria-describedby="search-addon"
+            />
+          </form>
+          <li class="nav-item">
+            <a class="nav-link" href="./cart.html">Cart</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./user.html">User</a>
+          </li>
+          <div class="d-flex align-items-center">
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <br>
+  <br>
 <h1>The Better Blanket</h1>
 <h2  >Welcome to the home of the <i>comfiest</i> blanket known to State College</h2>
 <p> Our two-sided blankets are perfect for every occasion! From cuddling on the couch, to the movie theater, to traveling on a plane, and every thing and season in between. </p>
