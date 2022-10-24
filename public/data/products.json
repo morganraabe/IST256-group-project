@@ -1,1 +1,8 @@
-
+[
+    {"product": "creamBlanket.jpg", "title":"Cream Blanket"},
+    {"product": "greyBlanket.jpg", "title": "Grey Blanket"},
+    {"product": "knitBlanket.jpg", "title":"Knit Blanket"},
+    {"product": "patternedBlanket.jpg", "title":"Patterned Blanket"},
+    {"product": "plaidBlanket.jpg", "title":"Plaid Blanket"},
+    {"product": "tealBlanket.jpg", "title":"Teal Blanket"}
+]
