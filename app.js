@@ -19,6 +19,30 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+//TODO
+
+//if errors, change all to double quotes
+
+var person=require("./public/data/PersonalData.json");
+
+app.get("/getList", function (req,res){
+  res.setHeader("Content-Type", "application/json");
+  res.end(JSON.stringify(person));
+});
+
+app.post("/setProfile", function(res,req){
+  //trips[req.body.idx].rating=req.body.rating;
+
+        person[0].username = req.body.username;
+        person[0].bio = req.body.bio;
+        person[0].cart = req.body.cart;
+
+  res.setHeader("Content-Type", "application/json");
+  res.end(JSON.stringify(person));
+});
+
+//END TODO
+
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
