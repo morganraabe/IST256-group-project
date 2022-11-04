@@ -23,10 +23,24 @@ function setData(){
 //the first setData was not working for me so i made this one(below), it wasnt working also but it was giving me an error
 //so i think one of the variables is bad
 
-*/function setData(){
+function setData(){
+    const ID =  $('#updateID')[0].value;
     const bio = $('#updateBio')[0].value;
     const username = $('#updateUsername')[0].value;
     $.post("/setProfile", {bio,username}, loadData);
-}/* 
+}
+
+
+function setAddress(){
+    const ID = $('#updateID')[0].value;
+    const location = $('#addAddress')[0].value;
+    $.post("/setAddress", {ID,location}, loadData);
+}
+
+function deleteInfo(){
+    const ID = $('#updateID')[0].value;
+    const location = 0;
+    $.post("/setAddress", {ID,location}, loadData);
+}
     
 }
