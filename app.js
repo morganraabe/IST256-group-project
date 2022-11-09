@@ -30,12 +30,14 @@ app.get("/getList", function (req,res){
   res.end(JSON.stringify(person));
 });
 
-app.post("/setProfile", function(res,req){
+app.post("/setProfile", function(req,res){
   //trips[req.body.idx].rating=req.body.rating;
-
-        person[0].username = req.body.username;
-        person[0].bio = req.body.bio;
-        person[0].cart = req.body.cart;
+        for(var i = 0; i < person.length; i++){
+          if(person[i].id == req.body.userId){
+          person[i].username = req.body.username;
+        }}
+        //person[0].bio = req.body.bio;
+    
 
   res.setHeader("Content-Type", "application/json");
   res.end(JSON.stringify(person));

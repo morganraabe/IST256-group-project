@@ -18,9 +18,9 @@ function getInfo(){
 //currently gives 500 error, need to connect to database
 function setData(){
     const id=$("#loadID")[0].value;
-    const address=$("#addAddress")[0].value;
+    const username=$("#updateUsername")[0].value;
 
-    $.post("/setProfile", {id,address}, loadData);
+    $.post("/setProfile", {userId:id,username:username}, loadData);
 }
 //the first setData was not working for me so i made this one(below), it wasnt working also but it was giving me an error
 //so i think one of the variables is bad
