@@ -15,7 +15,6 @@ function getInfo(){
     $.get("/getList", loadData);
 }
 
-//currently gives 500 error, need to connect to database
 function setData(){
     const id=$("#loadID")[0].value;
     const username=$("#updateUsername")[0].value;
