@@ -4,10 +4,11 @@ function loadData(PersonalData){
     //var div =$('<div></div>').append(JSON.stringify(tripInfo));
         $("#content").empty();
         for(let i = 0; i < PersonalData.length; i++){
+            console.log(PersonalData[i]);
             const person = PersonalData[i];
-            const span=$("<span></span>").append("username: " + PersonalData[0].username);
-            const paragraph=$("<p></p>").append(person[0].username).append(span);
-            $("#content").append(div);
+            const span=$("<span></span>").append("username: " + PersonalData[i].username);
+            const paragraph=$("<p></p>").append(person.username).append(span);
+            $("#content").append(paragraph);
     
 }}
 
@@ -44,4 +45,3 @@ function deleteInfo(){
     $.post("/setAddress", {ID,location}, loadData);
 }
     
-
