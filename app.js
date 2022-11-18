@@ -23,24 +23,57 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //if errors, change all to double quotes
 
-var person=require("./public/data/PersonalData.json");
+
+
+//UPDATE
+
 
 app.get("/getList", function (req,res){
   res.setHeader("Content-Type", "application/json");
-  res.end(JSON.stringify(person));
+ 
+
+  var MongoClient = require('mongodb').MongoClient;
+  var url = "mongodb://localhost:27017/";
+  
+  MongoClient.connect(url, function(err, db){
+    if(err) throw err;
+    var dbo = db.db("PersonalDataDB");
+    dbo.collection("PersonalData").find({}).toArray(function(err, result){
+      if (err) throw err;
+      console.log(result);
+      res.end(JSON.stringify(result));
+      db.close();
+    });
+  });
+
 });
 
 app.post("/setProfile", function(req,res){
   //trips[req.body.idx].rating=req.body.rating;
-        for(var i = 0; i < person.length; i++){
-          if(person[i].id == req.body.userId){
-          person[i].username = req.body.username;
-        }}
+      //  for(var i = 0; i < person.length; i++){
+        //  if(person[i].id == req.body.userId){
+          //person[i].username = req.body.username;
+        //}}
         //person[0].bio = req.body.bio;
-    
-
+  
   res.setHeader("Content-Type", "application/json");
-  res.end(JSON.stringify(person));
+  var MongoClient = require('mongodb').MongoClient;
+  var url = "mongodb://localhost:27017/";
+
+  MongoClient.connect(url, function(err, db){
+    if(err) throw err;
+    var dbo = db.db("PersonalDataDB");
+    var myquery = {id: req.body.name};
+    var newvalues = {$set: {username : req.body.rating}};
+  dbo.collection("PersonalData").updateOne(myquery, new getRandomValues, function(err, res){
+    if (err) throw err;
+    console.log("1 document updated");
+    res.end(JSON.stringify(res));
+    db.close();
+  });
+  });
+  
+
 });
 
 //END TODO
