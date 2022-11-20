@@ -17,7 +17,7 @@ function getInfo(){
 }
 
 function setData(){
-    const id=$("#loadID")[0].value;
+    const ID=$("#loadID")[0].value;
     const username=$("#updateUsername")[0].value;
 
     $.post("/setProfile", {userId:id,username:username}, loadData);
