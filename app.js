@@ -50,10 +50,10 @@ app.get("/getList", function (req,res){
 
 app.post("/setProfile", function(req,res){
   //trips[req.body.idx].rating=req.body.rating;
-      //  for(var i = 0; i < person.length; i++){
-        //  if(person[i].id == req.body.userId){
-          //person[i].username = req.body.username;
-        //}}
+       for(var i = 0; i < person.length; i++){
+         if(person[i].id == req.body.userId){
+          person[i].username = req.body.username;
+        }}
         //person[0].bio = req.body.bio;
   
   res.setHeader("Content-Type", "application/json");
