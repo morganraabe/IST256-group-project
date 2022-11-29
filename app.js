@@ -50,10 +50,10 @@ app.get("/getList", function (req,res){
 
 app.post("/setProfile", function(req,res){
   //trips[req.body.idx].rating=req.body.rating;
-       for(var i = 0; i < person.length; i++){
-         if(person[i].id == req.body.userId){
-          person[i].username = req.body.username;
-        }}
+      //  for(var i = 0; i < person.length; i++){
+      //    if(person[i].id == req.body.userId){
+      //     person[i].username = req.body.username;
+      //   }}
         //person[0].bio = req.body.bio;
   
   res.setHeader("Content-Type", "application/json");
@@ -63,12 +63,12 @@ app.post("/setProfile", function(req,res){
   MongoClient.connect(url, function(err, db){
     if(err) throw err;
     var dbo = db.db("PersonalDataDB");
-    var myquery = {id: req.body.name};
-    var newvalues = {$set: {username : req.body.rating}};
-  dbo.collection("PersonalData").updateOne(myquery, new getRandomValues, function(err, res){
+    var myquery = {id: req.body.userId};
+    var newvalues = {$set: {username: req.body.username, bio: req.body.bio}};
+  dbo.collection("PersonalData").updateOne(myquery, newvalues, function(err, res){
     if (err) throw err;
     console.log("1 document updated");
-    res.end(JSON.stringify(res));
+    //res.end(JSON.stringify(res));
     db.close();
   });
   });

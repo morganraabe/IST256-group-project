@@ -1,13 +1,13 @@
 function loadData(PersonalData){
-    console.log(PersonalData);
+    //console.log(PersonalData);
     //dumps onto webpage
     //var div =$('<div></div>').append(JSON.stringify(tripInfo));
         $("#content").empty();
         for(let i = 0; i < PersonalData.length; i++){
-            console.log(PersonalData[i]);
+            //console.log(PersonalData[i]);
             const person = PersonalData[i];
-            const span=$("<span></span>").append("username: " + PersonalData[i].username);
-            const paragraph=$("<p></p>").append(person.username).append(span);
+            const span=$("<span></span>").append("username: " + person.username);
+            const paragraph=$("<p></p>").append(span);
             $("#content").append(paragraph);
     
 }}
@@ -19,6 +19,7 @@ function getInfo(){
 function setData(){
     const id=$("#loadID")[0].value;
     const username=$("#updateUsername")[0].value;
+    //const bio=$("#updateBio")[0].value;
 
     $.post("/setProfile", {userId:id,username:username}, loadData);
 }
