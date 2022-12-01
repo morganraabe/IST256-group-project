@@ -12,8 +12,25 @@ function loadData(PersonalData){
     
 }}
 
+function loadCart(products){
+    //Problem is within the for loop, I believe, returns 200 but doesnt display data
+    //Displays other things if manually input, though
+            $("#contentCart").empty();
+        for(let i = 0; i < products.length; i++){
+            //console.log(PersonalData[i]);
+            const items = products[i];
+            const span=$("<span></span>").append("item: " + items.item);
+            const paragraph=$("<p></p>").append(span);
+            $("#contentCart").append(paragraph);
+    
+}}
+
 function getInfo(){
     $.get("/getList", loadData);
+}
+
+function getCart(){
+    $.get("/getTheCart", loadCart);
 }
 
 function setData(){
@@ -22,6 +39,13 @@ function setData(){
     //const bio=$("#updateBio")[0].value;
 
     $.post("/setProfile", {userId:id,username:username}, loadData);
+}
+
+function setCart(){
+    const item=$("#itemToAdd")[0].value;
+    const id=$("#idToLoad")[0].value;
+
+    $.post("/setUserCart", {userItem:item, userId:id}, loadCart);
 }
 //the first setData was not working for me so i made this one(below), it wasnt working also but it was giving me an error
 //so i think one of the variables is bad

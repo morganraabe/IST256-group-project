@@ -11,6 +11,7 @@
     <link rel="icon" type="image/x-icon" href="./images/favicon.ico" >
     <link href="./stylesheets/style.css" rel="stylesheet">
     <script src="./javascripts/load_images.js"></script>
+    <script src ="javascripts/content.js"></script>
     <link href ="navbar.html" rel="navbar">
 </head>
 <body style="background-color:rgb(187, 210, 230)">
@@ -72,9 +73,10 @@
 
     <!--Adds items to REST call-->
     <br>
+    <input id="idToLoad" type="text" placeholder="Enter user id">
     <input id="itemToAdd" type="text" placeholder="Enter a keyword">
     <br>
-    <button class="btn btn-danger" onclick="setData()">Add to Cart</button>
+    <button class="btn btn-danger" onclick="setCart()">Add to Cart</button>
     <div class="content"></div>
 </body>
 </html>

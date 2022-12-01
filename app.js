@@ -48,14 +48,28 @@ app.get("/getList", function (req,res){
 
 });
 
-app.post("/setProfile", function(req,res){
-  //trips[req.body.idx].rating=req.body.rating;
-      //  for(var i = 0; i < person.length; i++){
-      //    if(person[i].id == req.body.userId){
-      //     person[i].username = req.body.username;
-      //   }}
-        //person[0].bio = req.body.bio;
+app.get("/getTheCart", function (req,res){
+  res.setHeader("Content-Type", "application/json");
+ 
+
+  var MongoClient = require('mongodb').MongoClient;
+  var url = "mongodb://localhost:27017/";
   
+  MongoClient.connect(url, function(err, db){
+    if(err) throw err;
+    var dbo = db.db("CartDB");
+    dbo.collection("Cart").find({}).toArray(function(err, result){
+      if (err) throw err;
+      console.log(result);
+      res.end(JSON.stringify(result));
+      db.close();
+    });
+  });
+
+});
+
+app.post("/setProfile", function(req,res){
+
   res.setHeader("Content-Type", "application/json");
   var MongoClient = require('mongodb').MongoClient;
   var url = "mongodb://localhost:27017/";
@@ -64,8 +78,30 @@ app.post("/setProfile", function(req,res){
     if(err) throw err;
     var dbo = db.db("PersonalDataDB");
     var myquery = {id: req.body.userId};
-    var newvalues = {$set: {username: req.body.username, bio: req.body.bio}};
+    var newvalues = {$set: {username: req.body.username}};
   dbo.collection("PersonalData").updateOne(myquery, newvalues, function(err, res){
+    if (err) throw err;
+    console.log("1 document updated");
+    //res.end(JSON.stringify(res));
+    db.close();
+  });
+  });
+  
+
+});
+
+app.post("/setUserCart", function(req,res){
+
+  res.setHeader("Content-Type", "application/json");
+  var MongoClient = require('mongodb').MongoClient;
+  var url = "mongodb://localhost:27017/";
+
+  MongoClient.connect(url, function(err, db){
+    if(err) throw err;
+    var dbo = db.db("CartDB");
+    var myquery = {id: req.body.userId};
+    var newvalues = {$set: {item:req.body.userItem}};
+  dbo.collection("Cart").updateOne(myquery, newvalues, function(err, res){
     if (err) throw err;
     console.log("1 document updated");
     //res.end(JSON.stringify(res));
